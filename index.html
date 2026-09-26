@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quilt Math Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Quilt Math Calculator</h1>
+    <p>Enter your numbers, get your answers. No more seam-allowance headaches.</p>
+
+    <div class="calc">
+        <h2>Quilt Size</h2>
+        <label>Blocks across <input type="number" id="blocks-across" value="4" min="1"></label>
+        <label>Blocks down <input type="number" id="blocks-down" value="4" min="1"></label>
+        <label>Finished block size (in) <input type="number" id="block-size" value="12" min="1" step="0.5"></label>
+        <p class="result" id="size-result"></p>
+    </div>
+
+    <div class="calc">
+        <h2>Cutting Size</h2>
+        <label>Finished patch size (in) <input type="number" id="finished-size" value="2" min="0.5" step="0.25"></label>
+        <p class="result" id="cutting-result"></p>
+    </div>
+
+    <div class="calc">
+        <h2>Backing Yardage</h2>
+        <label>Quilt width (in) <input type="number" id="quilt-width" value="48" min="1"></label>
+        <label>Quilt length (in) <input type="number" id="quilt-length" value="48" min="1"></label>
+        <p class="result" id="backing-result"></p>
+    </div>
+
+    <script>
+        // Step 2: the math goes here
+    </script>
+</body>
+</html>
