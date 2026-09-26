@@ -1,0 +1,9 @@
+{
+  "name": "Quilt Math Calculator",
+  "short_name": "Quilt Math",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1a1a2e",
+  "background_color": "#1a1a2e",
+  "icons": [{"src": "icon.png", "sizes": "512x512", "type": "image/png"}]
+}
