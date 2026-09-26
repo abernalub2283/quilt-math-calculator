@@ -14,7 +14,8 @@
         <h2>Quilt Size</h2>
         <label>Blocks across <input type="number" id="blocks-across" value="4" min="1"></label>
         <label>Blocks down <input type="number" id="blocks-down" value="4" min="1"></label>
-        <label>Finished block size (in) <input type="number" id="block-size" value="12" min="1" step="0.5"></label>
+        <label>Finished block width (in) <input type="number" id="block-width" value="12" min="1" step="0.5"></label>
+        <label>Finished block height (in) <input type="number" id="block-height" value="12" min="1" step="0.5"></label>
         <p class="result" id="size-result"></p>
     </div>
 
@@ -32,7 +33,48 @@
     </div>
 
     <script>
-        // Step 2: the math goes here
+        function updateSize() {
+        const across = Number(document.getElementById('blocks-across').value);
+        const down = Number(document.getElementById('blocks-down').value);
+        const bWidth = Number(document.getElementById('block-width').value);
+        const bHeight = Number(document.getElementById('block-height').value);
+        const width = across * bWidth;
+        const length = down * bHeight;
+        document.getElementById('size-result').textContent =
+            `Quilt top: ${width}" x ${length}"`;
+    }
+
+    function updateCutting() {
+        const finished = Number(document.getElementById('finished-size').value);
+        const cut = finished + 0.5;
+        document.getElementById('cutting-result').textContent =
+            `Cut: ${cut}" x ${cut}" squares`;
+    }
+
+    function updateBacking() {
+        const w = Number(document.getElementById('quilt-width').value);
+        const l = Number(document.getElementById('quilt-length').value);
+        const needW = w + 8;
+        const needL = l + 8;
+        const panels = Math.ceil(needW / 44);
+        const yards = (panels * needL / 36).toFixed(2);
+        const word = panels === 1 ? 'panel' : 'panels';
+        document.getElementById('backing-result').textContent =
+            `Backing: ${needW}" x ${needL}" — buy ${yards} yards (${panels} ${word} of 44" fabric)`;
+    }
+
+    ['blocks-across', 'blocks-down', 'block-width', 'block-height'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', updateSize);
+    });
+    document.getElementById('finished-size').addEventListener('input', updateCutting);
+    ['quilt-width', 'quilt-length'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', updateBacking);
+    });
+
+    updateSize();
+    updateCutting();
+    updateBacking();
+
     </script>
 </body>
 </html>
